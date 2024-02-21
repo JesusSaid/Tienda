@@ -1,0 +1,167 @@
+<div *ngIf="tipoUsuario == 1">
+  <nav class="color">
+    <div class="nav-wrapper light-blue">
+      <a href="#" class="large material-icons prefix">directions_car</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="#">Salir</a></li>
+      <!--
+        <li> <a href="home/ventausuario" data-target="modalVentas" class="btn modal-trigger">Ventas Usuarios</a>
+        </li>
+      -->
+        <li> <a href="home/venta" class="btn modal-trigger">Ventas</a>
+        </li>
+        <li> <a href="home/vehiculo" class="btn modal-trigger">Vehiculos</a>
+        </li>
+        <li> <a href="home/usuarios" class="btn modal-trigger">Usuarios</a>
+        </li>
+        <li> <button class="waves-effect waves-light btn modal-trigger" href="#modalUsuarios">Nuevo Usuario</button>
+        </li>
+        <li><a class="waves-effect waves-light btn modal-trigger" href="#modalVehiculos">Agrega Vehiculo</a></li>
+        <li> <a href="home/perfil" class="btn model-trigger">Perfil</a></li>
+      </ul>
+    </div>
+  </nav>
+  <!-- Modal Trigger -->
+  <!--   <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+ -->
+  <!-- Modal Structure -->
+  <!--   <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div> -->
+
+  <div id="modalVehiculos" class="modal">
+    <div class="modal-content">
+      <div class="container left row">
+        <h4>Datos del vehiculo a ingresar</h4>
+
+        <div class="input-field">
+          <input [(ngModel)]="vehiculoActual.marca" type="text" name="marca"><label for="">Marca</label>
+        </div>
+        <div class="input-field">
+          <input [(ngModel)]="vehiculoActual.modelo" type="text" name="modelo"><label for="">Modelo</label>
+        </div>
+        <div class="input-field">
+          <input [(ngModel)]="vehiculoActual.year" type="number" name="year"><label for="">Año</label>
+        </div>
+        <div class="input-field">
+          <input [(ngModel)]="vehiculoActual.color" type="text" name="color"><label for="">Color</label>
+        </div>
+        <div class="input-field">
+          <input [(ngModel)]="vehiculoActual.carroceria" type="text" name="carroceria"><label for="">Carroceria</label>
+        </div>
+        <div class="input-field">
+          <input [(ngModel)]="vehiculoActual.cantidad" type="number" name="cantidad"><label for="">Cantidad</label>
+        </div>
+        <div class="input-field">
+          <input [(ngModel)]="vehiculoActual.descripcion" type="text" name="descripcion"><label
+            for="">Descripcion</label>
+        </div>
+        <div class="input-field">
+          <input [(ngModel)]="vehiculoActual.precio" type="number" name="precio"><label for="">Precio</label>
+        </div>
+        <div class="input-field">
+          <select class="campo" [(ngModel)]="vehiculoActual.categoria" name="categoria" id="categoria">
+            <option value="1">AUTOS</option>
+            <option value="2">MOTOS</option>
+            <option value="3">CAMIONETAS</option>
+            <option value="4">CAMIONES</option>
+            <label for="categoria">Categoria: </label>
+          </select>
+          <!--input [(ngModel)]="vehiculoActual.categoria" type="number" name="categoria"><label for="">Categoria</label-->
+        </div>
+        <div class="modal-footer">
+          <button (click)="agregarVehiculo()" class="modal-close waves-effect waves-green btn-flat">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Agregar
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="modalUsuarios" class="modal">
+    <div class="modal-content">
+
+      <h4>Datos del usuario a ingresar</h4>
+
+      <div class="input-field">
+        <input [(ngModel)]="usuarioActual.nombre" type="text" name="nombre"><label for="">Nombre</label>
+      </div>
+      <div class="input-field">
+        <input [(ngModel)]="usuarioActual.edad" type="number" name="edad"><label for="">Edad</label>
+      </div>
+      <div class="input-field">
+        <input [(ngModel)]="usuarioActual.sexo" type="text" name="sexo"><label for="">Sexo</label>
+      </div>
+      <div class="input-field">
+        <input [(ngModel)]="usuarioActual.pais" type="text" name="pais"><label for="">Pais</label>
+      </div>
+      <div class="input-field">
+        <input [(ngModel)]="usuarioActual.ciudad" type="text" name="ciudad"><label for="">Ciudad</label>
+      </div>
+      <div class="input-field">
+        <input [(ngModel)]="usuarioActual.direccion" type="text" name="direccion"><label for="">Direccion</label>
+      </div>
+      <div class="input-field">
+        <input [(ngModel)]="usuarioActual.telefono" type="number" name="telefono"><label for="">Telefono</label>
+      </div>
+      <div class="input-field">
+        <input [(ngModel)]="usuarioActual.correo" type="text" name="correo"><label for="">Correo</label>
+      </div>
+      <div class="input-field">
+        <input [(ngModel)]="usuarioActual.password" type="text" name="password"><label for="">Password</label>
+      </div>
+      <div class="input-field">
+        <select class="campo" [(ngModel)]="usuarioActual.tipo" type="number" name="tipo">
+          <option value="1">ADMINISTRADOR</option>
+          <option value="3">USUARIO</option>
+          <label for="">Tipo: </label>
+        </select>
+      </div>
+      <div class="modal-footer">
+        <button (click)="agregarUsuario()" class="modal-close waves-effect waves-green btn-flat">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          Agregar
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!------------------------------------------------------------------------------------------------->
+<div *ngIf="tipoUsuario == 2 || tipoUsuario == 3">
+  <nav class="color">
+    <div class="nav-wrapper light-blue">
+      <a href="#" class="large material-icons">directions_car</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="#">Salir</a></li>
+        <li> <a href="homecliente/credito" class="btn modal-trigger">Credito</a>
+        </li>
+        <li> <a href="homecliente/debito" class="btn modal-trigger">Debito</a>
+        </li>
+        <li> <a href="homecliente/transferencia" class="btn modal-trigger">Tranferencia</a>
+        </li>
+        <li> <a href="homecliente/categoria" class="btn modal-trigger">Categorias</a>
+        </li>
+        <li> <a href="homecliente/carrito" class="material-icons prefix">shopping_cart</a>
+        </li>
+        <li> <a href="homecliente/perfil" class="btn model-trigger">Perfil</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+</div>

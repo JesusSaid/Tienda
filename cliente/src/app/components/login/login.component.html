@@ -1,0 +1,41 @@
+<div class="login-box">
+    <h2>Login</h2>
+    <form>
+        <div class="user-box">
+            <input [(ngModel)]="usuario.correo" class="browser-default" type="email" name="email" id="email"
+                placeholder="correo" autocomplete="off">
+            <label>Email</label>
+        </div>
+        <div class="user-box">
+            <input [(ngModel)]="usuario.password" class="browser-default" type="password" name="password" id="password"
+                placeholder="contraseña" autocomplete="off">
+            <label>Password</label>
+        </div>
+        <button (click)="verificarUsuario()">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Entrar
+        </button>
+    </form>
+    <button class="waves-effect waves-light btn modal-trigger" href="#modalOlvidePassword">
+        Olvidé mi contraseña!
+    </button>
+</div>
+
+<div id="modalOlvidePassword" class="modal">
+    <div class="modal-content">
+        <div class="container left row">
+            <h4>Olvidé mi contraseña</h4>
+            <div class="input-field">
+                <input [(ngModel)]="usuario.correo" type="text" name="correo"><label for="">Correo electrónico</label>
+            </div>
+            <div class="modal-footer">
+                <button (click)="cambiarPassword()" class="modal-close waves-effect waves-green btn-flat">
+                    Enviar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

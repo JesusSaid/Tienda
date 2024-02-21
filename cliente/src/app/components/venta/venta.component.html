@@ -1,0 +1,24 @@
+<div>
+    <button (click)="exportAsXLSX()"><img src="{{liga}}/excel.png" style="width:64px;height:64px;"></button>
+</div>
+<table id="tabla-3">
+    <tr>
+        <th>MARCA</th>
+        <th>MODELO</th>
+        <th>AÑO</th>
+        <th>COLOR</th>
+        <th>CARROCERIA</th>
+        <th>PRECIO</th>
+        <th>FECHA</th>>
+    </tr>
+    <tr *ngFor="let venta of ventas">
+        <td>{{venta.marca}}</td>
+        <td>{{venta.modelo}}</td>
+        <td>{{venta.year}}</td>
+        <td>{{venta.color}}</td>
+        <td>{{venta.carroceria}}</td>
+        <td>{{venta.precio}}</td>
+        <td>{{venta.fecha}}</td>
+    </tr>
+
+</table>

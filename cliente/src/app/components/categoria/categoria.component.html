@@ -1,0 +1,72 @@
+<div class="nav-container">
+    <div class="nav-box right">
+        <ul class="nav-menu">
+            <li><a class="button" (click)="listVehiculos()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Vehiculos
+                </a></li>
+            <li><a class="button" (click)="categoriaCarro()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Autos
+                </a></li>
+            <li><a class="button" (click)="categoriaCamionetas()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Camionetas
+                </a></li>
+            <li><a class="button" (click)="categoriaMotos()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Motos
+                </a></li>
+            <li><a class="button" (click)="categoriaCamiones()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Camiones
+                </a></li>
+        </ul>
+    </div>
+</div>
+
+<div>
+    <table>
+        <tr>
+            <th>&nbsp;&nbsp;MARCA&nbsp;&nbsp;</th>
+            <th>&nbsp;&nbsp;MODELO&nbsp;&nbsp;</th>
+            <th>&nbsp;&nbsp;AÑO&nbsp;&nbsp;</th>
+            <th>&nbsp;&nbsp;COLOR&nbsp;&nbsp;</th>
+            <th>&nbsp;&nbsp;CARROCERIA&nbsp;&nbsp;</th>
+            <th>&nbsp;&nbsp;CATIDAD&nbsp;&nbsp;</th>
+            <th>&nbsp;&nbsp;DESCRIPCION&nbsp;&nbsp;</th>
+            <th>&nbsp;&nbsp;PRECIO&nbsp;&nbsp;</th>
+            <th>&nbsp;&nbsp;CATEGORIA&nbsp;&nbsp;</th>
+            <th>&nbsp;&nbsp;ACCION&nbsp;&nbsp;</th>
+        </tr>
+        <tr *ngFor="let vehiculo of vehiculos">
+            <td>&nbsp;&nbsp;&nbsp;{{vehiculo.marca}}</td>
+            <td>&nbsp;&nbsp;&nbsp;{{vehiculo.modelo}}</td>
+            <td>&nbsp;&nbsp;{{vehiculo.year}}</td>
+            <td>&nbsp;&nbsp;&nbsp;{{vehiculo.color}}</td>
+            <td>&nbsp;&nbsp;&nbsp;{{vehiculo.carroceria}}</td>
+            <td>&nbsp;&nbsp;&nbsp;{{vehiculo.cantidad}}</td>
+            <td>&nbsp;&nbsp;&nbsp;{{vehiculo.descripcion}}</td>
+            <td>&nbsp;&nbsp;&nbsp;{{vehiculo.precio}}</td>
+            <td>&nbsp;&nbsp;&nbsp;{{vehiculo.nombreCategoria}}</td>
+            <td>&nbsp;&nbsp;&nbsp;<a><button class="material-icons prefix"
+                        (click)="agregarCarrito(vehiculo.id, vehiculo.precio)">add_shopping_cart</button></a></td>
+        </tr>
+
+    </table>
+</div>

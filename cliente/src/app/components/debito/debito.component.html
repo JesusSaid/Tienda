@@ -1,0 +1,28 @@
+<div class="modal-content">
+    <h2>DEBITO</h2>
+    <form>
+        <div class="user-box">
+            <input [(ngModel)]="debitos.numero" type="number" name="numero">
+            <label>Numero de targeta</label>
+        </div>
+        <div class="user-box">
+            <input [(ngModel)]="debitos.nombre_banco" type="text" name="nombre_banco" required="">
+            <label>Banco</label>
+        </div>
+        <div class="user-box">
+            <input [(ngModel)]="debitos.nombre" type="text" name="nombre">
+            <label>Nombre del Propietario</label>
+        </div>
+        <div class="user-box">
+            <input [(ngModel)]="debitos.password" type="number" name="password">
+            <label>CVV</label>
+        </div>
+        <button (click)="verificarDebito()">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Aceptar
+        </button>
+    </form>
+</div>

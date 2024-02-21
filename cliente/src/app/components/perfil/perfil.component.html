@@ -1,0 +1,37 @@
+<div id="container">
+    <h1>&bull; PERFIL &bull;</h1>
+    <div class="underline">
+    </div>
+    <div class="centrar">
+        <img [src]="dameNombre(this.id)" (error)="onImgError($event)" width="300" height="200">
+    </div>
+    <form action="#" method="post" id="contact_form">
+      <div class="name">
+        <p>NOMBRE: {{usuario.nombre}}<p>
+      </div>
+      <div class="email">
+        <p>CORREO: {{usuario.correo}}<p>
+      </div>
+      <div class="name">
+        <p>EDAD: {{usuario.edad}}<p>
+      </div>
+      <div class="email">
+        <p>SEXO: {{usuario.sexo}}<p>
+      </div>
+      <div class="name">
+        <p>PAIS: {{usuario.pais}}<p>
+      </div>
+      <div class="email">
+        <p>CIUDAD: {{usuario.ciudad}}<p>
+      </div>
+      <div class="telephone">
+        <p>DIRECCION: {{usuario.direccion}}<p>
+      </div>
+      <div class="centrar">
+        <br>
+        <br>
+        <p>Cambiar foto de perfil:<p></p>
+        <input type="file" (change)="cargandoImagen($event.target,'perfil')" multiple>
+      </div>
+    </form><!-- // End form -->
+  </div><!-- // End #container -->

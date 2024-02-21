@@ -1,0 +1,14 @@
+@import '~material-design-icons/iconfont/material-icons.css';
+color{
+    background-color: blue;
+}
+.campo{
+    margin-bottom: 10px;
+    display: flex;
+}
+.campo label{
+    color: rgb(14, 90, 12);
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}

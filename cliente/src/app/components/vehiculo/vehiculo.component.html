@@ -1,0 +1,96 @@
+<div>
+  <input (change)="cargarExcelVehiculo($event)" type="file">
+  <button (click)="exportAsXLSX()"><img src="{{liga}}/excel.png" style="width:64px;height:64px;"></button>
+</div>
+<div>
+  <table id="tabla-2">
+    <tr>
+      <th>id</th>
+      <th>marca</th>
+      <th>modelo</th>
+      <th>year</th>
+      <th>color</th>
+      <th>carroceria</th>
+      <th>cantidad</th>
+      <th>descripcion</th>
+      <th>precio</th>
+      <th>categoria</th>
+      <th>acciones</th>
+    </tr>
+    <tr *ngFor="let vehiculo of vehiculos | paginate: { itemsPerPage: pageSize, currentPage: p };let i=index">
+      <td>{{vehiculo.id}}</td>
+      <td>{{vehiculo.marca}}</td>
+      <td>{{vehiculo.modelo}}</td>
+      <td>{{vehiculo.year}}</td>
+      <td>{{vehiculo.color}}</td>
+      <td>{{vehiculo.carroceria}}</td>
+      <td>{{vehiculo.cantidad}}</td>
+      <td>{{vehiculo.descripcion}}</td>
+      <td>{{vehiculo.precio}}</td>
+      <td>{{vehiculo.nombreCategoria}}</td>
+      <td><a (click)="eliminarVehiculo(vehiculo.id)"><i class="material-icons prefix">delete</i></a>
+        
+          <a (click)="visualizarVehiculo(vehiculo.id)" class="waves-effect waves-light btn modal-trigger" href="#modalEditaVehiculos">
+            <i class="material-icons prefix">edit</i></a>
+      </td>
+    </tr>
+
+  </table>
+    <pagination-controls class="waves-effect "  (pageChange)="p = ($event)"
+    previousLabel="Anterior" nextLabel="Siguiente">
+    </pagination-controls>
+
+
+<div id="modalEditaVehiculos" class="modal">
+  
+  <div class="modal-content">
+    <div class="container left row"> 
+    <h4>Datos del vehiculo a ingresar</h4>
+
+    <div class="input-field">
+      <input [(ngModel)]="vehiculoActual.marca" type="text" name="marca"><label for="">Marca</label>
+    </div>
+    <div class="input-field">
+      <input [(ngModel)]="vehiculoActual.modelo" type="text" name="modelo"><label for="">Modelo</label>
+    </div>
+    <div class="input-field">
+      <input [(ngModel)]="vehiculoActual.year" type="number" name="year"><label for="">Año</label>
+    </div>
+    <div class="input-field">
+      <input [(ngModel)]="vehiculoActual.color" type="text" name="color"><label for="">Color</label>
+    </div>
+    <div class="input-field">
+      <input [(ngModel)]="vehiculoActual.carroceria" type="text" name="carroceria"><label for="">Carroceria</label>
+    </div>
+    <div class="input-field">
+      <input [(ngModel)]="vehiculoActual.cantidad" type="number" name="cantidad"><label for="">Cantidad</label>
+    </div>
+    <div class="input-field">
+      <input [(ngModel)]="vehiculoActual.descripcion" type="text" name="descripcion"><label for="">Descripcion</label>
+    </div>
+    <div class="input-field">
+      <input [(ngModel)]="vehiculoActual.precio" type="number" name="precio"><label for="">Precio</label>
+    </div>
+    <div class="input-field">
+      <select class="campo" [(ngModel)]="vehiculoActual.categoria" name="categoria" id="categoria">
+        <option value="1">AUTOS</option>
+        <option value="2">MOTOS</option>
+        <option value="3">CAMIONETAS</option>
+        <option value="4">CAMIONES</option>
+        <label for="categoria">Categoria: </label>
+      </select>
+      <!--input [(ngModel)]="vehiculoActual.categoria" type="number" name="categoria"><label for="">Categoria</label-->
+    </div>
+    <div class="modal-footer">
+      <button (click)="editarVehiculo(vehiculoActual.id)" class="modal-close waves-effect waves-green btn-flat">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Editar
+      </button>
+    </div>
+  </div>
+</div>
+</div>
+</div>

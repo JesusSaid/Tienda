@@ -1,0 +1,48 @@
+<div class="login-box" >
+    <h2>Registro</h2>
+    <form>
+        <div class="user-box">
+            <input [(ngModel)]="usuarios.nombre" type="text" name="nombre">
+            <label for="">Nombre</label> 
+        </div>
+        <div class="user-box">
+            <input [(ngModel)]="usuarios.edad" type="number" name="edad">
+            <label for="">Edad</label>
+        </div>
+        <div class="user-box">
+            <input [(ngModel)]="usuarios.sexo" type="text" name="sexo">
+            <label for="">Sexo</label>
+        </div>
+        <div class="user-box">
+            <input [(ngModel)]="usuarios.pais" type="text" name="pais">
+            <label for="">Pais</label>
+        </div>
+        <div class="user-box">
+            <input [(ngModel)]="usuarios.ciudad" type="text" name="ciudad">
+            <label for="">Ciudad</label>
+        </div>
+        <div class="user-box">
+            <input [(ngModel)]="usuarios.direccion" type="text" name="direccion">
+            <label for="">Direccion</label>
+        </div>
+        <div class="user-box">
+            <input [(ngModel)]="usuarios.telefono" type="number" name="telefono">
+            <label for="">Telefono</label>
+        </div>
+        <div class="user-box">
+            <input [(ngModel)]="usuarios.correo" type="text" name="correo">
+            <label for="">Correo</label>
+        </div>
+        <div class="user-box">
+            <input [(ngModel)]="usuarios.password" type="password" name="password">
+            <label for="">Password</label>
+        </div>
+        <button (click)="agregarUsuario()">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            REGISTRARTE
+        </button>
+    </form>
+</div>

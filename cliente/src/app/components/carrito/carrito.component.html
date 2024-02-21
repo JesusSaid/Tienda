@@ -1,0 +1,62 @@
+<div>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>MARCA</th>
+      <th>MODELO</th>
+      <th>AÑO</th>
+      <th>COLOR</th>
+      <th>CARROCERIA</th>
+      <th>DESCRIPCION</th>
+      <th>PRECIO</th>
+      <th>ACCION</th>
+    </tr>
+    <tr *ngFor="let carrito of carritos">
+      <td>{{carrito.id}}</td>
+      <td>{{carrito.marca}}</td>
+      <td>{{carrito.modelo}}</td>
+      <td>{{carrito.year}}</td>
+      <td>{{carrito.color}}</td>
+      <td>{{carrito.carroceria}}</td>
+      <td>{{carrito.descripcion}}</td>
+      <td>{{carrito.precio}}</td>
+      <td>&nbsp;&nbsp;&nbsp;<a><button class="material-icons prefix"
+            (click)="eliminarCarrito(carrito.id)">remove_shopping_cart</button></a></td>
+    </tr>
+    <tr *ngFor="let total of totalCarrito">
+      <td colspan="7">Total</td>
+      <td>{{total.carrito_total}}</td>
+      <td></td>
+    </tr>
+  </table>
+  <div class="nav-container">
+    <div class="nav-box">
+      <ul class="nav-menu">
+    <!--th>PAGAR CON:</th-->
+    <li><a class="button" (click)="verificaCredito()">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      CREDITO
+    </a></li>
+    <li><a class="button" (click)="verificaDebito()">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      DEBITO
+    </a></li>
+    <li><a class="button" (click)="verificaTransferencia()">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      TRASNFERENCIA
+    </a></li>
+  </ul>
+  </div>
+</div>
+  
+  
+</div>

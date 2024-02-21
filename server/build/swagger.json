@@ -1,0 +1,2077 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "REST API Tienda de vehiculos",
+        "description": "<html><body>Esta es la documentación de la API para un sistema de control de una tienda de vehiculos en linea. <p>Para poder usar esta API es necesario solicitar el token y con esto poder utilizar los  servicios proporcionados.</p> <br> <p> <b>Autenticación y token de API</b></p><p>El administrador del sistema de la tienda proporciona el api-token. Una vez que haya creado y confirmado su cuenta.</p></body></html>",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "host": "localhost:3000",
+    "basePath": "",
+    "tags": [
+        {
+            "name": "Usuarios",
+            "description": "API para obtener información de los usuarios de la tienda."
+        },
+        {
+            "name": "Categorias",
+            "description": "API para obtener información de las categorias de los articulos que se encuentra en la tienda."
+        },
+        {
+            "name": "Forma de pagos",
+            "description": "API para obtener información de las diferentes formas de pago para los vehiculos que se encuentra en la tienda."
+        },
+        {
+            "name": "Creditos",
+            "description": "API para obtener información de las targetas de credito que se registraron en el sistema."
+        },
+        {
+            "name": "Debitos",
+            "description": "API para obtener información de las targetas de debito que se registraron en el sistema."
+        },
+        {
+            "name": "Transferencias",
+            "description": "API para obtener información de las transferencias que se registraron en el sistema."
+        },
+        {
+            "name": "Vehiculos",
+            "description": "API para obtener información de los autos que se encuentra en la tienda."
+        },
+        {
+            "name": "Carritos",
+            "description": "API para obtener información de los carritos de compras que se registraron en el sistema."
+        },
+        {
+            "name": "Ventas",
+            "description": "API para obtener información de las ventas que se registraron en el sistema."
+        }
+    ],
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/api/usuarios": {
+            "get": {
+                "tags": [
+                    "Usuarios"
+                ],
+                "summary": "Listado de todos los usuarios que existen en la tienda.",
+                "description": "<p>Servicio que devuelve la información detallada de todos los usuarios que pertenecen a la tienda </p><p>&nbsp;</p><p><em><strong>¿Cuáles son los usuarios?</strong></em></p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "id": 1,
+                                    "nombre": "Juan Ramiro Espinoza Gutierrez",
+                                    "edad": 22,
+                                    "sexo": "masculino",
+                                    "pais": "mexico",
+                                    "ciudad": "oaxaca",
+                                    "direccion": "pinos #21",
+                                    "telefono": 9531472585,
+                                    "correo": "juan@gmail.com",
+                                    "password": "1234",
+                                    "tipo": 1
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Usuario"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido",
+                        "tags": [
+                            "Usuarios"
+                        ]
+                    }
+                }
+            }
+        },
+        "/api/usuarios/{id}": {
+            "get": {
+                "tags": [
+                    "Usuarios"
+                ],
+                "summary": "Muestra la información de un usuario, dado su id.",
+                "description": "<p>Servicio que devuelve la información detallada de todos los usuarios que pertenecen a la tienda </p><p>&nbsp;</p><p><em><strong>¿Cuáles son los usuarios?</strong></em></p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "id": 1,
+                                    "nombre": "Juan Ramiro Espinoza Gutierrez",
+                                    "edad": 22,
+                                    "sexo": "masculino",
+                                    "pais": "mexico",
+                                    "ciudad": "oaxaca",
+                                    "direccion": "pinos #21",
+                                    "telefono": 9531472585,
+                                    "correo": "juan@gmail.com",
+                                    "password": "1234",
+                                    "tipo": 1
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Usuario"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "required id del usuario",
+                        "type": "string",
+                        "default": "1"
+                    }
+                ]
+            }
+        },
+        "/api/usuarios/": {
+            "post": {
+                "summary": "Agregar un usuario a la tienda.",
+                "description": "<p>Servicio que ingresa un usuario mas al sistema de la tienda </p><p>&nbsp;</p><p><em><strong>¿Cual usuario se agrega?</strong></em></p>",
+                "operationId": "create",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "usuario",
+                        "in": "body",
+                        "description": "Ingrese los datos del usuario",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/NuevoUsuario"
+                        }
+                    }
+                ],
+                "tags": [
+                    "Usuarios"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Usuario creado",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "fieldCount": 0,
+                                    "affectedRows": 1,
+                                    "insertId": 4,
+                                    "serverStatus": 2,
+                                    "warningCount": 0,
+                                    "message": "",
+                                    "protocol41": true,
+                                    "changedRows": 0
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Usuarios"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                }
+            }
+        },
+        "/api/usuarios/update/{id}": {
+            "put": {
+                "summary": "Modificar los datos de un usuario",
+                "description": "<p>Servicio que modifica la información de un usuario que pertenece a la tienda </p><p>&nbsp;</p><p><em><strong>¿Cuál es ese usuario?</strong></em></p>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Ingrese el id del usuario",
+                        "required": true,
+                        "default": 1
+                    },
+                    {
+                        "name": "usuario",
+                        "in": "body",
+                        "description": "Ingrese la info del usuario",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/viejoUsuario"
+                        }
+                    }
+                ],
+                "tags": [
+                    "Usuarios"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "servicio OK"
+                    }
+                }
+            }
+        },
+        "/api/usuarios/delete/{id}": {
+            "delete": {
+                "summary": "Elimina los datos de un usuario",
+                "description": "<p>Servicio que elimina la información de un usuario que pertenece a la tienda </p><p>&nbsp;</p><p><em><strong>¿Cuál es ese usuario?</strong></em></p>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Ingrese el id del usuario",
+                        "required": true,
+                        "default": 1
+                    }
+                ],
+                "tags": [
+                    "Usuarios"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "servicio OK"
+                    }
+                }
+            }
+        },
+        "/api/carritos/{id}": {
+            "get": {
+                "tags": [
+                    "Carritos"
+                ],
+                "summary": "Muestra la información de un carrito dado el id del usuario.",
+                "description": "<p>Servicio que devuelve la información detallada del carrito perteneciente al usuario</p><p>&nbsp;</p><p><em><strong>¿Cuál es el carrito?</strong></em></p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "id": 1,
+                                    "idUsuario": 15,
+                                    "idVehiculo": 15,
+                                    "cantidad": 3,
+                                    "total": 115646
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Carrito"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "required id del usuario",
+                        "type": "string",
+                        "default": "1"
+                    }
+                ]
+            }
+        }, "/api/carritos/total/{id}": {
+            "get": {
+                "tags": [
+                    "Carritos"
+                ],
+                "summary": "Muestra el total de un carrito dado el id del usuario.",
+                "description": "<p>Servicio que devuelve la información detallada del total del carrito perteneciente al usuario</p><p>&nbsp;</p><p><em><strong>¿Cuál es el total del carrito?</strong></em></p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "total": 115646
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Carrito"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "required id del usuario",
+                        "type": "string",
+                        "default": "1"
+                    }
+                ]
+            }
+        },
+        "/api/carritos/": {
+            "post": {
+                "summary": "Agregar un vehiculo al carrito",
+                "description": "<p>Servicio que ingresa un vehiculo al carrito </p><p>&nbsp;</p><p><em><strong>¿Cual vehiculo se agrega?</strong></em></p>",
+                "operationId": "create",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "carrito",
+                        "in": "body",
+                        "description": "Ingrese los datos del carrito",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/NuevoCarrito"
+                        }
+                    }
+                ],
+                "tags": [
+                    "Carritos"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Carrito creado",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "fieldCount": 0,
+                                    "affectedRows": 1,
+                                    "insertId": 4,
+                                    "serverStatus": 2,
+                                    "warningCount": 0,
+                                    "message": "",
+                                    "protocol41": true,
+                                    "changedRows": 0
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Carritos"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                }
+            }
+        },
+        "/api/carritos/delete/{id}": {
+            "delete": {
+                "summary": "Elimina los datos del carrito",
+                "description": "<p>Servicio que elimina la información de un carrito que pertenece a un usuario </p><p>&nbsp;</p><p><em><strong>¿Cuál es ese carrito?</strong></em></p>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Ingrese el id del carrito a eliminar",
+                        "required": true,
+                        "default": 1
+                    }
+                ],
+                "tags": [
+                    "Carritos"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "servicio OK"
+                    }
+                }
+            }
+        },
+        "/api/categorias": {
+            "get": {
+                "tags": [
+                    "Categorias"
+                ],
+                "summary": "Listado de todas las categorias que existen en la tienda.",
+                "description": "<p>Servicio que devuelve la información detallada de todas las categorias que pertenecen a la tienda </p><p>&nbsp;</p><p><em><strong>¿Cuáles son las categorias?</strong></em></p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "id": 0,
+                                    "nombre": "autos",
+                                    "descripcion": "vehiculo de 4 puertas"
+                                },
+                                {
+                                    "id": 1,
+                                    "nombre": "motos",
+                                    "descripcion": "vehiculo de 2 ruedas"
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Categorias"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido",
+                        "tags": [
+                            "Categorias"
+                        ]
+                    }
+                }
+            }
+        },
+        "/api/creditos": {
+            "get": {
+                "tags": [
+                    "Creditos"
+                ],
+                "summary": "Listado de todas las tarjetas de credito que existen en la tienda.",
+                "description": "<p>Servicio que devuelve la información detallada de todas las tarjetas de credito que pertenecen a la tienda </p><p>&nbsp;</p><p><em><strong>¿Cuáles son las tarjetas de credito?</strong></em></p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "id": 1,
+                                    "idTipopago": 1,
+                                    "idUsuario": 2,
+                                    "nombre": "Federico",
+                                    "numero": 658464564,
+                                    "fecha": "15/03/2024",
+                                    "password": "6565"
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Credito"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido",
+                        "tags": [
+                            "Creditos"
+                        ]
+                    }
+                }
+            }
+        },
+        "/api/creditos/": {
+            "post": {
+                "summary": "Agregar una tarjeta de credito al sisteme",
+                "description": "<p>Servicio que ingresa una tarjeta de credito al sistema </p><p>&nbsp;</p><p><em><strong>¿Cual tarjeta de credito se agrega?</strong></em></p>",
+                "operationId": "create",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "credito",
+                        "in": "body",
+                        "description": "Ingrese los datos de la tarjeta de credito",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/NuevoCredito"
+                        }
+                    }
+                ],
+                "tags": [
+                    "Creditos"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Tarjeta de credito creada",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "fieldCount": 0,
+                                    "affectedRows": 1,
+                                    "insertId": 4,
+                                    "serverStatus": 2,
+                                    "warningCount": 0,
+                                    "message": "",
+                                    "protocol41": true,
+                                    "changedRows": 0
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Creditos"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                }
+            }
+        },
+        "/api/debitos": {
+            "get": {
+                "tags": [
+                    "Debitos"
+                ],
+                "summary": "Listado de todas las tarjetas de debito que existen en la tienda.",
+                "description": "<p>Servicio que devuelve la información detallada de todas las tarjetas de debito que pertenecen a la tienda </p><p>&nbsp;</p><p><em><strong>¿Cuáles son las tarjetas de debito?</strong></em></p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "id": 1,
+                                    "idTipopago": 1,
+                                    "idUsuario": 2,
+                                    "nombre_banco": "BBVA",
+                                    "nombre": "Federico",
+                                    "numero": 658464564,
+                                    "password": "6565"
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Debito"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido",
+                        "tags": [
+                            "Debitos"
+                        ]
+                    }
+                }
+            }
+        },
+        "/api/debitos/": {
+            "post": {
+                "summary": "Agregar una tarjeta de debito al sisteme",
+                "description": "<p>Servicio que ingresa una tarjeta de debito al sistema </p><p>&nbsp;</p><p><em><strong>¿Cual tarjeta de debito se agrega?</strong></em></p>",
+                "operationId": "create",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "debito",
+                        "in": "body",
+                        "description": "Ingrese los datos de la tarjeta de debito",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/NuevoDebito"
+                        }
+                    }
+                ],
+                "tags": [
+                    "Debitos"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Tarjeta de debito creada",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "fieldCount": 0,
+                                    "affectedRows": 1,
+                                    "insertId": 4,
+                                    "serverStatus": 2,
+                                    "warningCount": 0,
+                                    "message": "",
+                                    "protocol41": true,
+                                    "changedRows": 0
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Debitos"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                }
+            }
+        },
+        "/api/transferencias": {
+            "get": {
+                "tags": [
+                    "Transferencias"
+                ],
+                "summary": "Listado de todas las transferencias que existen en la tienda.",
+                "description": "<p>Servicio que devuelve la información detallada de todas las transferencias que pertenecen a la tienda </p><p>&nbsp;</p><p><em><strong>¿Cuáles son las transferencias?</strong></em></p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "id": 1,
+                                    "idTipopago": 1,
+                                    "idUsuario": 2,
+                                    "nombre_banco": "BBVA",
+                                    "nombre": "Federico",
+                                    "numero": 658464564,
+                                    "password": "6565"
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Transferencia"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido",
+                        "tags": [
+                            "Transferencias"
+                        ]
+                    }
+                }
+            }
+        },
+        "/api/transferencias/": {
+            "post": {
+                "summary": "Agregar una transferencia al sistema",
+                "description": "<p>Servicio que ingresa una transferencia al sistema </p><p>&nbsp;</p><p><em><strong>¿Cual transferencia se agrega?</strong></em></p>",
+                "operationId": "create",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "transferencia",
+                        "in": "body",
+                        "description": "Ingrese los datos de la transferencia",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/NuevoTransferencia"
+                        }
+                    }
+                ],
+                "tags": [
+                    "Transferencias"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Transferencia creada",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "fieldCount": 0,
+                                    "affectedRows": 1,
+                                    "insertId": 4,
+                                    "serverStatus": 2,
+                                    "warningCount": 0,
+                                    "message": "",
+                                    "protocol41": true,
+                                    "changedRows": 0
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Transferencias"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                }
+            }
+        },
+        "/api/ventas": {
+            "get": {
+                "tags": [
+                    "Ventas"
+                ],
+                "summary": "Listado de todas las ventas que hay en la tienda.",
+                "description": "<p>Servicio que devuelve la información detallada de todas las ventas que hay en la tienda </p><p>&nbsp;</p><p><em><strong>¿Cuáles son las ventas?</strong></em></p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "id": 1,
+                                    "idVehiculo": 1,
+                                    "fecha": "01-05-1998"
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Venta"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido",
+                        "tags": [
+                            "Ventas"
+                        ]
+                    }
+                }
+            }
+        },
+        "/api/ventas/list2": {
+            "get": {
+                "tags": [
+                    "Ventas"
+                ],
+                "summary": "Listado de todas las ventas que hay en la tienda.",
+                "description": "<p>Servicio que devuelve la información detallada de todas las ventas que hay en la tienda </p><p>&nbsp;</p><p><em><strong>¿Cuáles son las ventas?</strong></em></p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "id": 1,
+                                    "idVehiculo": 1,
+                                    "fecha": "01-05-1998"
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Venta"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido",
+                        "tags": [
+                            "Ventas"
+                        ]
+                    }
+                }
+            }
+        },
+        "/api/ventas/": {
+            "post": {
+                "summary": "Agregar una venta al sistema",
+                "description": "<p>Servicio que ingresa una venta al sistema </p><p>&nbsp;</p><p><em><strong>¿Cual venta se agrega?</strong></em></p>",
+                "operationId": "create",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "venta",
+                        "in": "body",
+                        "description": "Ingrese los datos de la venta",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/NuevoVenta"
+                        }
+                    }
+                ],
+                "tags": [
+                    "Ventas"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Venta creada",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "fieldCount": 0,
+                                    "affectedRows": 1,
+                                    "insertId": 4,
+                                    "serverStatus": 2,
+                                    "warningCount": 0,
+                                    "message": "",
+                                    "protocol41": true,
+                                    "changedRows": 0
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Ventas"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                }
+            }
+        },
+        "/api/vehiculos": {
+            "get": {
+                "tags": [
+                    "Vehiculos"
+                ],
+                "summary": "Listado de todos los vehiculos que existen en la tienda.",
+                "description": "<p>Servicio que devuelve la información detallada de todos los vehiculos que pertenecen a la tienda </p><p>&nbsp;</p><p><em><strong>¿Cuáles son los vehiculos?</strong></em></p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "id": 1,
+                                    "marca": "volkswagen",
+                                    "modelo": "virtus",
+                                    "year": "2021",
+                                    "color": "azul",
+                                    "carroceria": "sedan",
+                                    "cantidad": 5,
+                                    "descripcion": "4 cilindros - 6 velocidades - 110 hp",
+                                    "precio": 349990,
+                                    "categoria": 1
+                                },
+                                {
+                                    "id": 2,
+                                    "marca": "nissan",
+                                    "modelo": "x-trail",
+                                    "year": "2019",
+                                    "color": "rojo",
+                                    "carroceria": "SUV",
+                                    "cantidad": 3,
+                                    "descripcion": "4 cilindros - 6 velocidades - 110 hp",
+                                    "precio": 349990,
+                                    "categoria": 1
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Vehiculos"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido",
+                        "tags": [
+                            "Vehiculos"
+                        ]
+                    }
+                }
+            }
+        },
+        "/api/vehiculos/{id}": {
+            "get": {
+                "tags": [
+                    "Vehiculos"
+                ],
+                "summary": "Muestra la información de los vehiculos, dado su id.",
+                "description": "<p>Servicio que devuelve la información detallada de todos los vehiuclos que pertenecen a la tienda </p><p>&nbsp;</p><p><em><strong>¿Cuáles son los vehiculos</strong></em></p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "id": 1,
+                                    "marca": "volkswagen",
+                                    "modelo": "virtus",
+                                    "year": "2021",
+                                    "color": "azul",
+                                    "carroceria": "sedan",
+                                    "cantidad": 5,
+                                    "descripcion": "4 cilindros - 6 velocidades - 110 hp",
+                                    "precio": 349990,
+                                    "categoria": 1
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Vehiculos"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "required id del vehiculo",
+                        "type": "string",
+                        "default": "1"
+                    }
+                ]
+            }
+        },
+        "/api/vehiculos/": {
+            "post": {
+                "summary": "Agregar un nuevo vehiculo a la tienda.",
+                "description": "<p>Servicio que ingresa un nuevo vehiculo al sistema de la tienda </p><p>&nbsp;</p><p><em><strong>¿Cual vehiculo se agrega?</strong></em></p>",
+                "operationId": "create",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "vehiculo",
+                        "in": "body",
+                        "description": "Ingrese los datos del vehiculo",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/NuevoVehiculo"
+                        }
+                    }
+                ],
+                "tags": [
+                    "Vehiculos"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "vehiculo creado",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "fieldCount": 0,
+                                    "affectedRows": 1,
+                                    "insertId": 4,
+                                    "serverStatus": 2,
+                                    "warningCount": 0,
+                                    "message": "",
+                                    "protocol41": true,
+                                    "changedRows": 0
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Vehiculos"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                }
+            }
+        },
+        "/api/vehiculos/update/{id}": {
+            "put": {
+                "summary": "Modificar los datos de un vehiculo",
+                "description": "<p>Servicio que modifica la información de un vehiculo que pertenece a la tienda </p><p>&nbsp;</p><p><em><strong>¿Cuál es ese vehiculo</strong></em></p>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Ingrese el id del vehiculo",
+                        "required": true,
+                        "default": 1
+                    },
+                    {
+                        "name": "auto",
+                        "in": "body",
+                        "description": "Ingrese la info del vehiculo",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/viejoVehiculo"
+                        }
+                    }
+                ],
+                "tags": [
+                    "Vehiculos"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "servicio OK"
+                    }
+                }
+            }
+        },
+        "/api/vehiculos/delete/{id}": {
+            "delete": {
+                "summary": "Elimina los datos de un vehiculo",
+                "description": "<p>Servicio que elimina la información de un vehiculo que pertenece a la tienda </p><p>&nbsp;</p><p><em><strong>¿Cuál es ese vehiculo?</strong></em></p>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Ingrese el id del vehiculo",
+                        "required": true,
+                        "default": 1
+                    }
+                ],
+                "tags": [
+                    "Vehiculos"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "servicio OK"
+                    }
+                }
+            }
+        },
+        "/api/formapagos": {
+            "get": {
+                "tags": [
+                    "Forma de pagos"
+                ],
+                "summary": "Listado de todas las formas de pagos que existen en la tienda.",
+                "description": "<p>Servicio que devuelve la información detallada de todas las formas de pago que pertenecen a la tienda </p><p>&nbsp;</p><p><em><strong>¿Cuáles son las formas de pago?</strong></em></p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "id": 1,
+                                    "idpago": 1,
+                                    "nombre": "credito"
+                                },
+                                {
+                                    "id": 2,
+                                    "idpago": 2,
+                                    "nombre": "debito"
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Formapagos"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido",
+                        "tags": [
+                            "Forma de pagos"
+                        ]
+                    }
+                }
+            }
+        },
+        "/api/formapagos/": {
+            "post": {
+                "summary": "Agregar una nueva forma de pago a la tienda.",
+                "description": "<p>Servicio que ingresa un nuevo metodo de pago mas al sistema de la tienda </p><p>&nbsp;</p><p><em><strong>¿Cual metodo de pago se agrega?</strong></em></p>",
+                "operationId": "create",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "metodo de pago",
+                        "in": "body",
+                        "description": "Ingrese los datos del metodo de pago",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/NuevoFormapago"
+                        }
+                    }
+                ],
+                "tags": [
+                    "Forma de pagos"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "metodo creado",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "fieldCount": 0,
+                                    "affectedRows": 1,
+                                    "insertId": 4,
+                                    "serverStatus": 2,
+                                    "warningCount": 0,
+                                    "message": "",
+                                    "protocol41": true,
+                                    "changedRows": 0
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Formapagos"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                }
+            }
+        },
+        "/api/formapagos/update/{id}": {
+            "put": {
+                "summary": "Modificar los datos del metodo de pago",
+                "description": "<p>Servicio que modifica la información de un metodo de pago que pertenece a la tienda </p><p>&nbsp;</p><p><em><strong>¿Cuál es ese metodo de pago?</strong></em></p>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Ingrese el id del metodo de pago",
+                        "required": true,
+                        "default": 1
+                    },
+                    {
+                        "name": "metodo de pago",
+                        "in": "body",
+                        "description": "Ingrese la info del metodo",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/viejoFormapago"
+                        }
+                    }
+                ],
+                "tags": [
+                    "Forma de pagos"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "servicio OK"
+                    }
+                }
+            }
+        },
+        "/api/formapagos/delete/{id}": {
+            "delete": {
+                "summary": "Elimina los datos de una forma de pago",
+                "description": "<p>Servicio que elimina la información de una forma de pago que pertenece a la tienda </p><p>&nbsp;</p><p><em><strong>¿Cuál es ese metodo de pago?</strong></em></p>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Ingrese el id del metodo de pago",
+                        "required": true,
+                        "default": 1
+                    }
+                ],
+                "tags": [
+                    "Forma de pagos"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "servicio OK"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Usuarios": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/Usuario"
+            }
+        },
+        "Usuario": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "description": "Identificador único de un usuario"
+                },
+                "nombre": {
+                    "type": "string",
+                    "description": "describe el nombre de los usuarios"
+                },
+                "edad": {
+                    "type": "number",
+                    "description": "edad del usuario"
+                },
+                "sexo": {
+                    "type": "string",
+                    "description": "genero del usuario"
+                },
+                "pais": {
+                    "type": "string",
+                    "description": "pais del usuario"
+                },
+                "ciudad": {
+                    "type": "string",
+                    "description": "estado del usuario"
+                },
+                "direccion": {
+                    "type": "string",
+                    "description": "direccion del usuario"
+                },
+                "telefono": {
+                    "type": "number",
+                    "description": "contacto del usuario"
+                },
+                "correo": {
+                    "type": "string",
+                    "description": "correo para acceder al sistema (unico del usuario)"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "contraseña de acceso al sistema"
+                },
+                "tipo": {
+                    "type": "number",
+                    "description": "saber que tipo de usuario es"
+                }
+            }
+        },
+        "Categorias": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/Categorias"
+            }
+        },
+        "Categoria": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "description": "Identificador único de una categoria"
+                },
+                "idCategoria": {
+                    "type": "number",
+                    "description": "Identificador unico de la categoria"
+                },
+                "nombre": {
+                    "type": "string",
+                    "description": "describe el nombre de la categoria"
+                }
+            }
+        },
+        "NuevoUsuario": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "description": "Identificador único de un usuario"
+                },
+                "nombre": {
+                    "type": "string",
+                    "description": "describe el nombre de los usuarios"
+                },
+                "edad": {
+                    "type": "number",
+                    "description": "edad del usuario"
+                },
+                "sexo": {
+                    "type": "string",
+                    "description": "genero del usuario"
+                },
+                "pais": {
+                    "type": "string",
+                    "description": "pais del usuario"
+                },
+                "ciudad": {
+                    "type": "string",
+                    "description": "estado del usuario"
+                },
+                "direccion": {
+                    "type": "string",
+                    "description": "direccion del usuario"
+                },
+                "telefono": {
+                    "type": "number",
+                    "description": "contacto del usuario"
+                },
+                "correo": {
+                    "type": "string",
+                    "description": "correo para acceder al sistema (unico del usuario)"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "contraseña de acceso al sistema"
+                },
+                "tipo": {
+                    "type": "number",
+                    "description": "saber que tipo de usuario es"
+                }
+            }
+        },
+        "viejoUsuario": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "description": "Identificador único de un usuario"
+                },
+                "nombre": {
+                    "type": "string",
+                    "description": "describe el nombre de los usuarios"
+                },
+                "edad": {
+                    "type": "number",
+                    "description": "edad del usuario"
+                },
+                "sexo": {
+                    "type": "string",
+                    "description": "genero del usuario"
+                },
+                "pais": {
+                    "type": "string",
+                    "description": "pais del usuario"
+                },
+                "ciudad": {
+                    "type": "string",
+                    "description": "estado del usuario"
+                },
+                "direccion": {
+                    "type": "string",
+                    "description": "direccion del usuario"
+                },
+                "telefono": {
+                    "type": "number",
+                    "description": "contacto del usuario"
+                },
+                "correo": {
+                    "type": "string",
+                    "description": "correo para acceder al sistema (unico del usuario)"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "contraseña de acceso al sistema"
+                },
+                "tipo": {
+                    "type": "number",
+                    "description": "saber que tipo de usuario es"
+                }
+            }
+        },
+        "NuevaCategoria": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "description": "Identificador único de la categoria"
+                },
+                "nombre": {
+                    "type": "string",
+                    "description": "describe el nombre de la categoria"
+                },
+                "descripcion": {
+                    "type": "string",
+                    "description": "Descripcion del vehiculo"
+                }
+            }
+        },
+        "viejaCategoria": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "description": "Identificador único de la categoria"
+                },
+                "nombre": {
+                    "type": "string",
+                    "description": "describe el nombre de la categoria"
+                },
+                "descripcion": {
+                    "type": "string",
+                    "description": "Descripcion del vehiculo"
+                }
+            }
+        },
+        "formapagos": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/Formapagos"
+            }
+        },
+        "Formapagos": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "description": "Identificador único del metodo de pago"
+                },
+                "idpago": {
+                    "type": "number",
+                    "description": "Identificador unico del metodo de pago"
+                },
+                "nombre": {
+                    "type": "string",
+                    "description": "describe el nombre de la forma de pago"
+                }
+            }
+        },
+        "NuevoFormapago": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "description": "Identificador único del metodo de pago"
+                },
+                "idpago": {
+                    "type": "number",
+                    "description": "Identificador unico del metodo de pago"
+                },
+                "nombre": {
+                    "type": "string",
+                    "description": "describe el nombre de la forma de pago"
+                }
+            }
+        },
+        "viejoFormapago": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "description": "Identificador único del metodo de pago"
+                },
+                "idpago": {
+                    "type": "number",
+                    "description": "Identificador unico del metodo de pago"
+                },
+                "nombre": {
+                    "type": "string",
+                    "description": "describe el nombre de la forma de pago"
+                }
+            }
+        },
+        "pagos": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/Pagos"
+            }
+        },
+        "Pagos": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "description": "Identificador único del pago"
+                },
+                "idpago": {
+                    "type": "number",
+                    "description": "Identificador único del paog"
+                },
+                "nombre": {
+                    "type": "string",
+                    "description": "Nombre del propietario del pago"
+                },
+                "numero": {
+                    "type": "number",
+                    "description": "Numero unico del pago que lo proporciona el banco"
+                },
+                "fecha": {
+                    "type": "string",
+                    "description": "Fecha que vence la tarjeta"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "Contraseña de la targeta"
+                }
+            }
+        },
+        "NuevoPago": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "description": "Identificador único del pago"
+                },
+                "idpago": {
+                    "type": "number",
+                    "description": "Identificador único del paog"
+                },
+                "nombre": {
+                    "type": "string",
+                    "description": "Nombre del propietario del pago"
+                },
+                "numero": {
+                    "type": "number",
+                    "description": "Numero unico del pago que lo proporciona el banco"
+                },
+                "fecha": {
+                    "type": "string",
+                    "description": "Fecha que vence la tarjeta"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "Contraseña de la targeta"
+                }
+            }
+        },
+        "viejoPago": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "description": "Identificador único del pago"
+                },
+                "idpago": {
+                    "type": "number",
+                    "description": "Identificador único del paog"
+                },
+                "nombre": {
+                    "type": "string",
+                    "description": "Nombre del propietario del pago"
+                },
+                "numero": {
+                    "type": "number",
+                    "description": "Numero unico del pago que lo proporciona el banco"
+                },
+                "fecha": {
+                    "type": "string",
+                    "description": "Fecha que vence la tarjeta"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "Contraseña de la targeta"
+                }
+            }
+        },
+        "vehiculos": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/Vehiculos"
+            }
+        },
+        "Vehiculos": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "description": "Identificador único del vehiculo"
+                },
+                "marca": {
+                    "type": "string",
+                    "description": "Marca a la que pertenece el vehiculo"
+                },
+                "modelo": {
+                    "type": "string",
+                    "description": "Modelo al que pertenece el vehiculo"
+                },
+                "year": {
+                    "type": "string",
+                    "description": "Año de lanzamiento del vehiculo"
+                },
+                "color": {
+                    "type": "string",
+                    "description": "Color del vehiculo"
+                },
+                "carroceria": {
+                    "type": "string",
+                    "description": "Forma que tiene el vehiculo"
+                },
+                "cantidad": {
+                    "type": "number",
+                    "description": "La exitenca de vehiculos que hay a la venta"
+                },
+                "descripcion": {
+                    "type": "string",
+                    "description": "Datos mas detallados del vehiculo"
+                },
+                "precio": {
+                    "type": "number",
+                    "description": "precio del vehiculo"
+                },
+                "categoria": {
+                    "type": "number",
+                    "description": "categoria del vehiculo"
+                }
+            }
+        },
+        "NuevoVehiculo": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "description": "Identificador único del vehiculo"
+                },
+                "marca": {
+                    "type": "string",
+                    "description": "Marca a la que pertenece el vehiculo"
+                },
+                "modelo": {
+                    "type": "string",
+                    "description": "Modelo al que pertenece el vehiculo"
+                },
+                "year": {
+                    "type": "string",
+                    "description": "Año de lanzamiento del vehiculo"
+                },
+                "color": {
+                    "type": "string",
+                    "description": "Color del vehiculo"
+                },
+                "carroceria": {
+                    "type": "string",
+                    "description": "Forma que tiene el vehiculo"
+                },
+                "cantidad": {
+                    "type": "number",
+                    "description": "La exitenca de vehiculos que hay a la venta"
+                },
+                "descripcion": {
+                    "type": "string",
+                    "description": "Datos mas detallados del vehiculo"
+                },
+                "precio": {
+                    "type": "number",
+                    "description": "precio del vehiculo"
+                },
+                "categoria": {
+                    "type": "number",
+                    "description": "categoria del vehiculo"
+                }
+            }
+        },
+        "viejoVehiculo": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "description": "Identificador único del vehiculo"
+                },
+                "marca": {
+                    "type": "string",
+                    "description": "Marca a la que pertenece el vehiculo"
+                },
+                "modelo": {
+                    "type": "string",
+                    "description": "Modelo al que pertenece el vehiculo"
+                },
+                "year": {
+                    "type": "string",
+                    "description": "Año de lanzamiento del vehiculo"
+                },
+                "color": {
+                    "type": "string",
+                    "description": "Color del vehiculo"
+                },
+                "carroceria": {
+                    "type": "string",
+                    "description": "Forma que tiene el vehiculo"
+                },
+                "cantidad": {
+                    "type": "number",
+                    "description": "La exitenca de vehiculos que hay a la venta"
+                },
+                "descripcion": {
+                    "type": "string",
+                    "description": "Datos mas detallados del vehiculo"
+                },
+                "precio": {
+                    "type": "number",
+                    "description": "precio del vehiculo"
+                },
+                "categoria": {
+                    "type": "number",
+                    "description": "categoria del vehiculo"
+                }
+            }
+        },
+        "compras": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/Compras"
+            }
+        },
+        "Compras": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "description": "Identificador único del camion"
+                },
+                "idCliente": {
+                    "type": "number",
+                    "description": "Identificador único del cliente"
+                },
+                "idFormapago": {
+                    "type": "number",
+                    "description": "Identificador único de la forma de pago"
+                },
+                "idVehiculo": {
+                    "type": "number",
+                    "description": "Identificador único del vehiculo"
+                }
+            }
+        },
+        "NuevaCompra": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "description": "Identificador único del camion"
+                },
+                "idCliente": {
+                    "type": "number",
+                    "description": "Identificador único del cliente"
+                },
+                "idFormapago": {
+                    "type": "number",
+                    "description": "Identificador único de la forma de pago"
+                },
+                "idVehiculo": {
+                    "type": "number",
+                    "description": "Identificador único del vehiculo"
+                }
+            }
+        },
+        "viejaCompra": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "description": "Identificador único del camion"
+                },
+                "idCliente": {
+                    "type": "number",
+                    "description": "Identificador único del cliente"
+                },
+                "idFormapago": {
+                    "type": "number",
+                    "description": "Identificador único de la forma de pago"
+                },
+                "idVehiculo": {
+                    "type": "number",
+                    "description": "Identificador único del vehiculo"
+                }
+            }
+        },
+        "carritos": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/Carritos"
+            }
+        },
+        "Carritos": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "description": "Identificador único del carrito"
+                },
+                "idUsuario": {
+                    "type": "number",
+                    "description": "Identificador único del usuario"
+                },
+                "idVehiculo": {
+                    "type": "number",
+                    "description": "Identificador único del vehiculo"
+                },
+                "cantidad": {
+                    "type": "number",
+                    "description": "Cantidad de vehiculos"
+                },
+                "total": {
+                    "type": "number",
+                    "description": "Total de carrito"
+                }
+            }
+        },
+        "NuevoCarrito": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "description": "Identificador único del carrito"
+                },
+                "idUsuario": {
+                    "type": "number",
+                    "description": "Identificador único del usuario"
+                },
+                "idVehiculo": {
+                    "type": "number",
+                    "description": "Identificador único del vehiculo"
+                },
+                "cantidad": {
+                    "type": "number",
+                    "description": "Cantidad de vehiculos"
+                },
+                "total": {
+                    "type": "number",
+                    "description": "Total de carrito"
+                }
+            }
+        },
+        "creditos": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/Creditos"
+            }
+        },
+        "Creditos": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "description": "Identificador único de la tarjeta de credito"
+                },
+                "idTipopago": {
+                    "type": "number",
+                    "description": "Identificador único del tipo de pago"
+                },
+                "idUsuario": {
+                    "type": "number",
+                    "description": "Identificador único del usuario"
+                },
+                "nombre": {
+                    "type": "string",
+                    "description": "Nombre del propietario"
+                },
+                "numero": {
+                    "type": "number",
+                    "description": "Numero de la tarjeta de credito"
+                },
+                "fecha": {
+                    "type": "string",
+                    "description": "Fecha de vencimiento de la tarjeta de credito"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "token de seguridad"
+                }
+            }
+        },
+        "NuevoCredito": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "description": "Identificador único de la tarjeta de credito"
+                },
+                "idTipopago": {
+                    "type": "number",
+                    "description": "Identificador único del tipo de pago"
+                },
+                "idUsuario": {
+                    "type": "number",
+                    "description": "Identificador único del usuario"
+                },
+                "nombre": {
+                    "type": "string",
+                    "description": "Nombre del propietario"
+                },
+                "numero": {
+                    "type": "number",
+                    "description": "Numero de la tarjeta de credito"
+                },
+                "fecha": {
+                    "type": "string",
+                    "description": "Fecha de vencimiento de la tarjeta de credito"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "token de seguridad"
+                }
+            }
+        },
+        "debitos": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/Debitos"
+            }
+        },
+        "Debitos": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "description": "Identificador único de la tarjeta de debito"
+                },
+                "idTipopago": {
+                    "type": "number",
+                    "description": "Identificador único del tipo de pago"
+                },
+                "idUsuario": {
+                    "type": "number",
+                    "description": "Identificador único del usuario"
+                },
+                "nombre_banco": {
+                    "type": "string",
+                    "description": "Nombre del banco"
+                },
+                "nombre": {
+                    "type": "string",
+                    "description": "Nombre del propietario"
+                },
+                "numero": {
+                    "type": "number",
+                    "description": "Numero de la tarjeta de debito"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "token de seguridad"
+                }
+            }
+        },
+        "NuevoDebito": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "description": "Identificador único de la tarjeta de debito"
+                },
+                "idTipopago": {
+                    "type": "number",
+                    "description": "Identificador único del tipo de pago"
+                },
+                "idUsuario": {
+                    "type": "number",
+                    "description": "Identificador único del usuario"
+                },
+                "nombre_banco": {
+                    "type": "string",
+                    "description": "Nombre del banco"
+                },
+                "nombre": {
+                    "type": "string",
+                    "description": "Nombre del propietario"
+                },
+                "numero": {
+                    "type": "number",
+                    "description": "Numero de la tarjeta de debito"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "token de seguridad"
+                }
+            }
+        },
+        "transferencias": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/Transferencias"
+            }
+        },
+        "Transferencias": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "description": "Identificador único de la transferencia"
+                },
+                "idTipopago": {
+                    "type": "number",
+                    "description": "Identificador único de la transferencia"
+                },
+                "idUsuario": {
+                    "type": "number",
+                    "description": "Identificador único del usuario"
+                },
+                "nombre_banco": {
+                    "type": "string",
+                    "description": "Nombre del banco"
+                },
+                "nombre": {
+                    "type": "string",
+                    "description": "Nombre del propietario"
+                },
+                "numero": {
+                    "type": "number",
+                    "description": "Numero de la transferencia"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "token de seguridad"
+                }
+            }
+        },
+        "NuevoTransferencia": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "description": "Identificador único de la transferencia"
+                },
+                "idTipopago": {
+                    "type": "number",
+                    "description": "Identificador único del tipo de pago"
+                },
+                "idUsuario": {
+                    "type": "number",
+                    "description": "Identificador único del usuario"
+                },
+                "nombre_banco": {
+                    "type": "string",
+                    "description": "Nombre del banco"
+                },
+                "nombre": {
+                    "type": "string",
+                    "description": "Nombre del propietario"
+                },
+                "numero": {
+                    "type": "number",
+                    "description": "Numero de la transferencia"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "token de seguridad"
+                }
+            }
+        },
+        "ventas": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/Ventas"
+            }
+        },
+        "Ventas": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "description": "Identificador único de la venta"
+                },
+                "idVehiculo": {
+                    "type": "number",
+                    "description": "Identificador único del vehiculo vendido"
+                },
+                "fecha": {
+                    "type": "string",
+                    "description": "fecha de la venta"
+                }
+            }
+        },
+        "NuevoVenta": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "description": "Identificador único de la venta"
+                },
+                "idVehiculo": {
+                    "type": "number",
+                    "description": "Identificador único del vehiculo vendido"
+                },
+                "fecha": {
+                    "type": "string",
+                    "description": "fecha de la venta"
+                }
+            }
+        }
+    }
+}

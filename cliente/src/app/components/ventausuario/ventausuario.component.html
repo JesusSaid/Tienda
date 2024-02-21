@@ -1,0 +1,15 @@
+<table>
+    <tr>
+        <th>NOMBRE DEL USUARIO</th>
+        <th>FECHA DE COMPRA</th>
+        <th>TIPO DE PAGO</th>
+        <th>VEHICULO</th>
+    </tr>
+    <tr *ngFor="let venta of ventas">
+        <td>{{venta.nombreU}}</td>
+        <td>{{venta.fecha}}</td>
+        <td>{{venta.nombre}}</td>
+        <td>{{venta.marca}}</td>
+    </tr>
+
+</table>

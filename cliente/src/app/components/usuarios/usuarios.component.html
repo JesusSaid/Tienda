@@ -1,0 +1,103 @@
+<div>
+    <input (change)="cargarExcelUsuario($event)" type="file">
+    <button (click)="exportAsXLSX()"><img src="{{liga}}/excel.png" style="width:64px;height:64px;"></button>
+</div>
+<div>
+    <table id="tabla-1">
+        <tr>
+            <th>id</th>
+            <th>nombre</th>
+            <th>edad</th>
+            <th>sexo</th>
+            <th>pasi</th>
+            <th>ciudad</th>
+            <th>direccion</th>
+            <th>telefono</th>
+            <th>correo</th>
+            <th>tipo</th>
+            <th>acciones</th>
+        </tr>
+            <tr *ngFor="let usuario of usuarios| paginate: { itemsPerPage: pageSize, currentPage: p };let i=index">
+                <td>{{usuario.id}}</td>
+                <td>{{usuario.nombre}}</td>
+                <td>{{usuario.edad}}</td>
+                <td>{{usuario.sexo}}</td>
+                <td>{{usuario.pais}}</td>
+                <td>{{usuario.ciudad}}</td>
+                <td>{{usuario.direccion}}</td>
+                <td>{{usuario.telefono}}</td>
+                <td>{{usuario.correo}}</td>
+                <td>{{usuario.tipo}}</td>
+                <td><a (click)="eliminarUsuario(usuario.id)"><i class="material-icons prefix">delete</i></a>
+                    <a (click)="visualizarUsuario(usuario.id)" class="waves-effect waves-light btn modal-trigger"
+                        href="#modalEditarUsuarios">
+                        <i class="material-icons prefix">edit</i></a>
+                </td>
+            </tr>    
+        
+
+    </table>
+    <div class="row center-align">
+        <pagination-controls class="my-pagination" (pageChange)="p = ($event)"
+        previousLabel="Anterior" nextLabel="Siguiente">
+        </pagination-controls>
+        </div>
+
+
+    <div id="modalEditarUsuarios" class="modal">
+
+        <div class="modal-content">
+            <div class="container left row">
+
+                <h4>Datos del usuario a ingresar</h4>
+
+                <div class="input-field">
+                    <input [(ngModel)]="usuarioActual.nombre" type="text" name="nombre"><label for="">Nombre</label>
+                </div>
+                <div class="input-field">
+                    <input [(ngModel)]="usuarioActual.edad" type="number" name="edad"><label for="">Edad</label>
+                </div>
+                <div class="input-field">
+                    <input [(ngModel)]="usuarioActual.sexo" type="text" name="sexo"><label for="">Sexo</label>
+                </div>
+                <div class="input-field">
+                    <input [(ngModel)]="usuarioActual.pais" type="text" name="pais"><label for="">Pais</label>
+                </div>
+                <div class="input-field">
+                    <input [(ngModel)]="usuarioActual.ciudad" type="text" name="ciudad"><label for="">Ciudad</label>
+                </div>
+                <div class="input-field">
+                    <input [(ngModel)]="usuarioActual.direccion" type="text" name="direccion"><label
+                        for="">Direccion</label>
+                </div>
+                <div class="input-field">
+                    <input [(ngModel)]="usuarioActual.telefono" type="number" name="telefono"><label
+                        for="">Telefono</label>
+                </div>
+                <div class="input-field">
+                    <input [(ngModel)]="usuarioActual.correo" type="text" name="correo"><label for="">Correo</label>
+                </div>
+                <div class="input-field">
+                    <input [(ngModel)]="usuarioActual.password" type="text" name="password"><label
+                        for="">Password</label>
+                </div>
+                <div class="input-field">
+                    <select class="campo" [(ngModel)]="usuarioActual.tipo" type="number" name="tipo">
+                        <option value="1">ADMINISTRADOR</option>
+                        <option value="3">USUARIO</option>
+                        <label for="">Tipo: </label>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button (click)="editarUsuario(usuarioActual.id)">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Editar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
